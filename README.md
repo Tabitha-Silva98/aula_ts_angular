@@ -1,31 +1,36 @@
-# Projeto de Formulário Angular com Busca de CEP
+# Formulário Simples de Usuário 📝
 
-**Objetivo:** Desenvolver um formulário em Angular que coleta informações pessoais e de endereço de um usuário. O formulário deve ser esteticamente agradável e seguir as melhores práticas de desenvolvimento de software.
+## Descrição 📚
 
-**Descrição do Projeto:**
+Este projeto é uma atividade que envolve o desenvolvimento de um formulário em Angular para coletar informações pessoais e de endereço de um usuário.
 
-Você deve criar um formulário que solicita as seguintes informações do usuário:
+## Tecnologias Utilizadas 💻
 
-1. Nome completo
-2. Data de nascimento
-3. CPF
-4. E-mail
-5. Telefone
-6. CEP
-7. Endereço completo (rua, número, complemento, bairro, cidade, estado)
+O projeto foi desenvolvido utilizando o framework Angular 17. Além disso, a biblioteca de estilização Bootstrap também foi utilizada para auxiliar na criação da interface do usuário.
 
-O projeto inicial já possui um serviço que busca informações de endereço a partir do CEP utilizando o serviço ViaCEP.
+## Instalação ⚙️
 
-**Requisitos:**
+Para rodar este projeto localmente, siga os passos abaixo:
 
-1. O formulário deve ser construído usando Angular.
-2. Ao digitar o CEP, o formulário deve buscar automaticamente as informações de endereço e preenchê-las nos campos correspondentes.
-3. O formulário deve ter validações para todos os campos, garantindo que as informações inseridas estejam corretas.
-4. O design do formulário deve ser agradável e intuitivo para o usuário.
-5. O código deve ser limpo, bem comentado e seguir as melhores práticas de desenvolvimento Angular.
+1. Certifique-se de ter o Node.js e o npm instalados em sua máquina.
+2. Instale o Angular CLI globalmente usando o comando `npm install -g @angular/cli`.
+3. Clone este repositório para a sua máquina local usando `git clone https://github.com/tabitha-silva98/aula_ts_angular.git`.
+4. Navegue até a pasta do projeto e instale as dependências com `npm install`.
+5. Inicie o servidor de desenvolvimento com `ng serve`.
+6. Navegue até `http://localhost:4200/`. O aplicativo será recarregado automaticamente se você alterar qualquer um dos arquivos de origem.
 
-**Entrega:**
+## Uso 🖥️
 
-O projeto deve ser entregue como um repositório Git, contendo todos os arquivos necessários para executar o aplicativo. Inclua também um README com instruções de instalação e uso, bem como quaisquer outras informações que você considere relevantes.
+Após a instalação, você pode usar o projeto preenchendo o formulário apresentado na página inicial. As informações inseridas serão coletadas e armazenadas para uso posterior.
 
-Boa sorte!
+## Contato 📧
+
+Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato comigo através do meu [GitHub](https://github.com/tabitha-silva98).
+
+## Link 🔗
+
+Você pode acessar o projeto no seguinte link: [Formulário Simples de Usuário](https://tabitha-silva98.github.io/aula_ts_angular/)
+
+---
+
+Feito com ❤️ por Tabitha Silva.
