@@ -2,23 +2,31 @@
   <div class="row justify-content-center">
     <h1>{{ title }}</h1>
 
+    <!-- para cada input, foi utilizado o boostrap para o css, ngClass faz a validação se deve apresetar
+    qual estilização, existe alguns antigos ngIf para apresetar ou nao a mensagem de errors
+    e o input e controlado pelo formControlName que se referencia ao formGroup criado no component -->
+
     <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="col-12">
       <div class="form-group">
         <label>Nome completo:</label>
         <input
-          type="text"
+          type="txt"
           formControlName="nomeCompleto"
           class="form-control"
+          [ngClass]="{
+            'is-invalid': submitted && !!formulario['nomeCompleto']?.errors,
+            'is-valid': submitted && !formulario['nomeCompleto']?.errors
+          }"
         />
-        <div
-          *ngIf="
-            profileForm.get('nomeCompleto').invalid &&
-            profileForm.get('nomeCompleto').touched
-          "
-          class="text-danger"
-        >
-          Nome completo é obrigatório.
+        @if (submitted && !!formulario['nomeCompleto']?.errors) {
+        <div class="invalid-feedback">
+          @if (!!formulario['nomeCompleto']?.errors) {
+          <div>
+            {{ getFirstErrorMessage("nomeCompleto") }}
+          </div>
+          }
         </div>
+        }
       </div>
 
       <div class="form-group">
@@ -27,158 +35,249 @@
           type="date"
           formControlName="dataNascimento"
           class="form-control"
+          [ngClass]="{
+            'is-invalid': submitted && !!formulario['dataNascimento']?.errors,
+            'is-valid': submitted && !formulario['dataNascimento']?.errors
+          }"
         />
-        <div
-          *ngIf="
-            profileForm.get('dataNascimento').invalid &&
-            profileForm.get('dataNascimento').touched
-          "
-          class="text-danger"
-        >
-          Data de nascimento é obrigatória.
+        @if (submitted && !!formulario['dataNascimento']?.errors) {
+        <div class="invalid-feedback">
+          @if (!!formulario['dataNascimento']?.errors) {
+          <div>
+            {{ getFirstErrorMessage("dataNascimento") }}
+          </div>
+          }
         </div>
+        }
       </div>
 
       <div class="form-group">
         <label>CPF:</label>
-        <input type="text" formControlName="cpf" class="form-control" />
-        <div
-          *ngIf="
-            profileForm.get('cpf').invalid && profileForm.get('cpf').touched
-          "
-          class="text-danger"
-        >
-          CPF é obrigatório e deve ter 11 dígitos.
+        <input
+          type="txt"
+          formControlName="cpf"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': submitted && !!formulario['cpf']?.errors,
+            'is-valid': submitted && !formulario['cpf']?.errors
+          }"
+        />
+        @if (submitted && !!formulario['cpf']?.errors) {
+        <div class="invalid-feedback">
+          @if (!!formulario['cpf']?.errors) {
+          <div>
+            {{ getFirstErrorMessage("cpf") }}
+          </div>
+          }
         </div>
+        }
       </div>
 
       <div class="form-group">
         <label>E-mail:</label>
-        <input type="email" formControlName="email" class="form-control" />
-        <div
-          *ngIf="
-            profileForm.get('email').invalid && profileForm.get('email').touched
-          "
-          class="text-danger"
-        >
-          E-mail é obrigatório e deve ser válido.
+        <input
+          type="email"
+          formControlName="email"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': submitted && !!formulario['email']?.errors,
+            'is-valid': submitted && !formulario['email']?.errors
+          }"
+        />
+        @if (submitted && !!formulario['email']?.errors) {
+        <div class="invalid-feedback">
+          @if (!!formulario['email']?.errors) {
+          <div>
+            {{ getFirstErrorMessage("email") }}
+          </div>
+          }
         </div>
+        }
       </div>
 
       <div class="form-group">
         <label>Telefone:</label>
-        <input type="tel" formControlName="telefone" class="form-control" />
-        <div
-          *ngIf="
-            profileForm.get('telefone').invalid &&
-            profileForm.get('telefone').touched
-          "
-          class="text-danger"
-        >
-          Telefone é obrigatório.
+        <input
+          type="txt"
+          formControlName="telefone"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': submitted && !!formulario['telefone']?.errors,
+            'is-valid': submitted && !formulario['telefone']?.errors
+          }"
+        />
+        @if (submitted && !!formulario['telefone']?.errors) {
+        <div class="invalid-feedback">
+          @if (!!formulario['telefone']?.errors) {
+          <div>
+            {{ getFirstErrorMessage("telefone") }}
+          </div>
+          }
         </div>
+        }
       </div>
 
       <div class="form-group">
         <label>CEP:</label>
-        <input type="text" formControlName="cep" class="form-control" />
-        <div
-          *ngIf="
-            profileForm.get('cep').invalid && profileForm.get('cep').touched
-          "
-          class="text-danger"
-        >
-          CEP é obrigatório e deve ter 8 dígitos.
+        <input
+          type="txt"
+          formControlName="cep"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': submitted && !!formulario['cep']?.errors,
+            'is-valid': submitted && !formulario['cep']?.errors
+          }"
+        />
+        @if (submitted && !!formulario['cep']?.errors) {
+        <div class="invalid-feedback">
+          @if (!!formulario['cep']?.errors) {
+          <div>
+            {{ getFirstErrorMessage("cep") }}
+          </div>
+          }
         </div>
+        }
       </div>
 
-      <div formGroupName="endereco">
-        <div class="form-group">
-          <label>Rua:</label>
-          <input type="text" formControlName="rua" class="form-control" />
-          <div
-            *ngIf="
-              profileForm.get('endereco.rua').invalid &&
-              profileForm.get('endereco.rua').touched
-            "
-            class="text-danger"
-          >
-            Rua é obrigatória.
+      <div class="form-group">
+        <label>Rua:</label>
+        <input
+          type="txt"
+          formControlName="rua"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': submitted && !!formulario['rua']?.errors,
+            'is-valid': submitted && !formulario['rua']?.errors
+          }"
+        />
+        @if (submitted && !!formulario['rua']?.errors) {
+        <div class="invalid-feedback">
+          @if (!!formulario['rua']?.errors) {
+          <div>
+            {{ getFirstErrorMessage("rua") }}
           </div>
+          }
         </div>
-
-        <div class="form-group">
-          <label>Número:</label>
-          <input type="text" formControlName="numero" class="form-control" />
-          <div
-            *ngIf="
-              profileForm.get('endereco.numero').invalid &&
-              profileForm.get('endereco.numero').touched
-            "
-            class="text-danger"
-          >
-            Número é obrigatório.
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>Complemento:</label>
-          <input
-            type="text"
-            formControlName="complemento"
-            class="form-control"
-          />
-        </div>
-
-        <div class="form-group">
-          <label>Bairro:</label>
-          <input type="text" formControlName="bairro" class="form-control" />
-          <div
-            *ngIf="
-              profileForm.get('endereco.bairro').invalid &&
-              profileForm.get('endereco.bairro').touched
-            "
-            class="text-danger"
-          >
-            Bairro é obrigatório.
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>Cidade:</label>
-          <input type="text" formControlName="cidade" class="form-control" />
-          <div
-            *ngIf="
-              profileForm.get('endereco.cidade').invalid &&
-              profileForm.get('endereco.cidade').touched
-            "
-            class="text-danger"
-          >
-            Cidade é obrigatória.
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>Estado:</label>
-          <input type="text" formControlName="estado" class="form-control" />
-          <div
-            *ngIf="
-              profileForm.get('endereco.estado').invalid &&
-              profileForm.get('endereco.estado').touched
-            "
-            class="text-danger"
-          >
-            Estado é obrigatória.
-          </div>
-        </div>
+        }
       </div>
+
+      <div class="form-group">
+        <label>Numero:</label>
+        <input
+          type="txt"
+          formControlName="numero"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': submitted && !!formulario['numero']?.errors,
+            'is-valid': submitted && !formulario['numero']?.errors
+          }"
+        />
+        @if (submitted && !!formulario['numero']?.errors) {
+        <div class="invalid-feedback">
+          @if (!!formulario['numero']?.errors) {
+          <div>
+            {{ getFirstErrorMessage("numero") }}
+          </div>
+          }
+        </div>
+        }
+      </div>
+
+      <div class="form-group">
+        <label>Complemento:</label>
+        <input
+          type="txt"
+          formControlName="complemento"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': submitted && !!formulario['complemento']?.errors,
+            'is-valid': submitted && !formulario['complemento']?.errors
+          }"
+        />
+        @if (submitted && !!formulario['complemento']?.errors) {
+        <div class="invalid-feedback">
+          @if (!!formulario['complemento']?.errors) {
+          <div>
+            {{ getFirstErrorMessage("complemento") }}
+          </div>
+          }
+        </div>
+        }
+      </div>
+
+      <div class="form-group">
+        <label>Bairro:</label>
+        <input
+          type="txt"
+          formControlName="bairro"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': submitted && !!formulario['bairro']?.errors,
+            'is-valid': submitted && !formulario['bairro']?.errors
+          }"
+        />
+        @if (submitted && !!formulario['bairro']?.errors) {
+        <div class="invalid-feedback">
+          @if (!!formulario['bairro']?.errors) {
+          <div>
+            {{ getFirstErrorMessage("bairro") }}
+          </div>
+          }
+        </div>
+        }
+      </div>
+
+      <div class="form-group">
+        <label>Cidade:</label>
+        <input
+          type="txt"
+          formControlName="cidade"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': submitted && !!formulario['cidade']?.errors,
+            'is-valid': submitted && !formulario['cidade']?.errors
+          }"
+        />
+        @if (submitted && !!formulario['cidade']?.errors) {
+        <div class="invalid-feedback">
+          @if (!!formulario['cidade']?.errors) {
+          <div>
+            {{ getFirstErrorMessage("cidade") }}
+          </div>
+          }
+        </div>
+        }
+      </div>
+
+      <div class="form-group">
+        <label>Estado:</label>
+        <input
+          type="txt"
+          formControlName="estado"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': submitted && !!formulario['estado']?.errors,
+            'is-valid': submitted && !formulario['estado']?.errors
+          }"
+        />
+        @if (submitted && !!formulario['estado']?.errors) {
+        <div class="invalid-feedback">
+          @if (!!formulario['estado']?.errors) {
+          <div>
+            {{ getFirstErrorMessage("estado") }}
+          </div>
+          }
+        </div>
+        }
+      </div>
+
       <button type="submit" class="btn btn-primary">Submit</button>
       <button
         type="button"
         class="btn btn-secondary"
-        (click)="logFormValidations()"
+        (click)="removerSubmitted()"
       >
-        Verificar Validações
+        Remover Submitted
       </button>
     </form>
   </div>
